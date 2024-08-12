@@ -70,69 +70,60 @@ fun ArtSpaceLayout() {
             when (currentImage) {
 
                 1 -> {
-                    ImagePlaceHolder(drawableResourceId = R.drawable.dirt_bike)
+                    ImagePlaceHolder(
+                        drawableResourceId = R.drawable.dirt_bike,
+                        title = "Exhilarating Dirt Bike Adventure in the Dunes of Australia.",
+                        artist = "Nicky Hayden",
+                        year = "(2024)"
+                    )
                     isEnabledPrev = false
                     isEnabledNext = true
                 }
 
                 2 -> {
-                    ImagePlaceHolder(drawableResourceId = R.drawable.dirt_bike2)
+                    ImagePlaceHolder(
+                        drawableResourceId = R.drawable.dirt_bike2,
+                        title = "High-Speed Sand Trails: Dirt Biking in the Deserts of Dubai.",
+                        artist = "Steve McQueen",
+                        year = "(2021)"
+                    )
                     isEnabledPrev = true
                     isEnabledNext = true
                 }
 
                 3 -> {
-                    ImagePlaceHolder(drawableResourceId = R.drawable.dirt_bike3)
+                    ImagePlaceHolder(
+                        drawableResourceId = R.drawable.dirt_bike3,
+                        title = "Epic Off-Road Journey: Dirt Biking Through the Sands of Namibia.",
+                        artist = "Valentino Rossi",
+                        year = "(2019)"
+                    )
                     isEnabledPrev = true
                     isEnabledNext = true
                 }
 
                 4 -> {
-                    ImagePlaceHolder(drawableResourceId = R.drawable.dirt_bike4)
+                    ImagePlaceHolder(
+                        drawableResourceId = R.drawable.dirt_bike4,
+                        title = "Ultimate Sand Challenge: Dirt Biking in the Sahara Desert, India.",
+                        artist = "Marc Márquez",
+                        year = "(2018)"
+                    )
                     isEnabledPrev = true
                     isEnabledNext = true
                 }
 
                 5 -> {
-                    ImagePlaceHolder(drawableResourceId = R.drawable.dirt_bike5)
+                    ImagePlaceHolder(
+                        drawableResourceId = R.drawable.dirt_bike5,
+                        title = "Thrilling Dirk Bike Ride In Sand in Australia.",
+                        artist = "Eval Knievel",
+                        year = "(2009)"
+                    )
                     isEnabledPrev = true
                     isEnabledNext = false
                 }
             }
-
-
-
-            Box(
-                modifier = Modifier
-                    .padding(top = 30.dp, start = 30.dp, end = 30.dp)
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(
-                                Color(0xFFECEBF5),
-                                Color(0xFFECEBF5)
-                            )
-                        ),
-                        shape = RoundedCornerShape(8.dp)
-                    )
-            ) {
-
-                Column(modifier = Modifier.padding(10.dp)) {
-                    Text(
-                        text = "I am Riding a Dirt Motorbike",
-                        fontSize = 20.sp, lineHeight = 35.sp
-                    )
-                    Row {
-                        Text(
-                            text = "Animesh Roy",
-                            fontWeight = FontWeight.Bold,
-                        )
-                        Text(text = "(2024)", fontWeight = FontWeight.SemiBold)
-                    }
-
-                }
-            }
-
-
 
             PrevNextButton(onClickNext = {
                 currentImage += 1
@@ -173,7 +164,10 @@ fun PrevNextButton(
 }
 
 @Composable
-fun ImagePlaceHolder(drawableResourceId: Int, modifier: Modifier = Modifier) {
+fun ImagePlaceHolder(
+    drawableResourceId: Int, title: String,
+    artist: String, year: String, modifier: Modifier = Modifier
+) {
 
     Card(
         modifier = modifier
@@ -188,7 +182,8 @@ fun ImagePlaceHolder(drawableResourceId: Int, modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .wrapContentSize()
-                .padding(25.dp).height(300.dp),
+                .padding(25.dp)
+                .height(300.dp),
             contentAlignment = Alignment.Center
         ) {
             Image(
@@ -197,6 +192,36 @@ fun ImagePlaceHolder(drawableResourceId: Int, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .wrapContentSize()
             )
+        }
+    }
+
+    Box(
+        modifier = Modifier
+            .padding(top = 30.dp, start = 30.dp, end = 30.dp)
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        Color(0xFFECEBF5),
+                        Color(0xFFECEBF5)
+                    )
+                ),
+                shape = RoundedCornerShape(8.dp)
+            )
+    ) {
+
+        Column(modifier = Modifier.padding(10.dp)) {
+            Text(
+                text = title,
+                fontSize = 20.sp, lineHeight = 35.sp
+            )
+            Row {
+                Text(
+                    text = artist,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(text = year, fontWeight = FontWeight.SemiBold)
+            }
+
         }
     }
 }
